@@ -122,7 +122,8 @@ public class HomeFragment extends Fragment {
                 builder.setTitle("Choose Your Environment")
                         .setAdapter(adapter, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int item ) {
-                                Toast.makeText(getActivity(), "Item Selected: " + item, Toast.LENGTH_SHORT).show();
+
+                                //Toast.makeText(getActivity(), "Item Selected: " + item, Toast.LENGTH_SHORT).show();
 
                                 String threshold = items[item];
                                 Log.d("HomeFragment", threshold);

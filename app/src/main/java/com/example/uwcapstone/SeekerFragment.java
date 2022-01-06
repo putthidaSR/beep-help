@@ -112,7 +112,6 @@ public class SeekerFragment extends Fragment {
         // start to listen to sequence
         mClientThread = new Sender("Seeker");
         mClientThread.start();
-
         Log.d("SeekerFragment", "Startttttt");
 
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +120,7 @@ public class SeekerFragment extends Fragment {
                 // Stop if currently seeking
                 if (instance != null && isSeeking) {
                     Log.d("SeekerFragment", "attempt to stop");
-                    imgBtn.setImageResource(R.drawable.start);
+                    imgBtn.setImageResource(R.drawable.play);
                     playStopLabel.setText("Start Seeking For Help");
                     playStopLabel.setTextColor(Color.parseColor("#0748ab"));
 
@@ -129,7 +128,7 @@ public class SeekerFragment extends Fragment {
                     mClientThread = null;
                     isSeeking = false;
 
-                    Toast.makeText(getActivity(), "start", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "start", Toast.LENGTH_SHORT).show();
 
 
                 } else if (!isSeeking) {
@@ -142,7 +141,7 @@ public class SeekerFragment extends Fragment {
                     mClientThread.start();
 
                     // start to listen to sequence
-                    Toast.makeText(getActivity(), "Start", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "Start", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -166,4 +165,16 @@ public class SeekerFragment extends Fragment {
             Log.d("SeekerFragment", "No Log");
         }
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        if (isSeeking && mClientThread != null) {
+            mClientThread.stopThread();
+            mClientThread = null;
+            isSeeking = false;
+        }
+    }
+
 }
