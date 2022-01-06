@@ -5,12 +5,14 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -155,6 +157,25 @@ public class SeekerFragment extends Fragment {
         } else {
             Log.d("SeekerFragment", "No Log");
         }
+    }
+
+    // this event will enable the back
+    // function to the button on press
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                if (isSeeking && mClientThread != null) {
+                    mClientThread.stopThread();
+                    mClientThread = null;
+                    isSeeking = false;
+                    instance = null;
+                }
+                Log.d("SeekerFragment", "Back pressed");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

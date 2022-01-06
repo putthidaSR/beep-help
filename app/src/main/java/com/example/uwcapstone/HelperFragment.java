@@ -3,12 +3,14 @@ package com.example.uwcapstone;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -121,6 +123,25 @@ public class HelperFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    // this event will enable the back
+    // function to the button on press
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                if (isListening && mReceiverThread != null) {
+                    mReceiverThread.stopThread();
+                    mReceiverThread = null;
+                    isListening = false;
+                    instance = null;
+                }
+                Log.d("HelperFragment", "Back pressed");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static void log(final String text) {
