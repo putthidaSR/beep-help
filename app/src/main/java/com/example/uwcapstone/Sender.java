@@ -27,15 +27,15 @@ class Sender extends Thread {
     @Override
     public void run() {
 
-        if(!mRole.equals("Seeker") && !mRole.equals("Helper")) {
+        if(!mRole.equals(SEEKER) && !mRole.equals(HELPER)) {
             SeekerFragment.log("INVALID ROLE");
             return;
         }
 
         if (mRole.equals(SEEKER)) {
             // Start receiver thread to search ACK
-            MainActivity.mReceiverThread = new Receiver(SEEKER);
-            MainActivity.mReceiverThread.start();
+            HelperFragment.mReceiverThread = new Receiver(SEEKER);
+            HelperFragment.mReceiverThread.start();
         }
 
 
@@ -55,16 +55,16 @@ class Sender extends Thread {
             if(mRole.equals(SEEKER) && number >= 20) {
                 number = 0;
 
-                if(MainActivity.mReceiverThread != null) {
-                    MainActivity.mReceiverThread.resumeReceive();
+                if(HelperFragment.mReceiverThread != null) {
+                    HelperFragment.mReceiverThread.resumeReceive();
                 }
                 try {
                     sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if(MainActivity.mReceiverThread != null) {
-                    MainActivity.mReceiverThread.pauseReceive();
+                if(HelperFragment.mReceiverThread != null) {
+                    HelperFragment.mReceiverThread.pauseReceive();
                 }
             }
             Utils.play(playSequence);
@@ -73,8 +73,8 @@ class Sender extends Thread {
 
     void stopThread() {
         mExit = true;
-        if(mRole.equals(SEEKER) && MainActivity.mReceiverThread != null) {
-            MainActivity.mReceiverThread.stopThread();
+        if(mRole.equals(SEEKER) && HelperFragment.mReceiverThread != null) {
+            HelperFragment.mReceiverThread.stopThread();
         }
     }
 

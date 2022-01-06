@@ -152,9 +152,12 @@ public class HomeFragment extends Fragment {
         mStartReceiveBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // start to listen to sequence
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.putExtra("EXTRA_SESSION_ID", "tttt");
-                startActivity(intent);
+//                Intent intent = new Intent(getContext(), MainActivity.class);
+//                intent.putExtra("EXTRA_SESSION_ID", "tttt");
+//                startActivity(intent);
+
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HelperFragment()).commit();
+
             }
         });
 

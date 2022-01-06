@@ -33,15 +33,9 @@ public class SeekerFragment extends Fragment {
 
     private static FragmentActivity instance;
     private boolean isSeeking;
-    private Spinner thresholdSpinner;
-    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     String msg = "";
-    public static String frequencyInput = "6000";
-    public static String sampleRateInput = "48000";
-    public static String bandWidthInput = "1000";
 
     static Sender mClientThread;
-    static Receiver mReceiverThread;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,9 +94,6 @@ public class SeekerFragment extends Fragment {
         Utils.initConvolution((Params.signalSequenceLength * Params.bitCount));
 
         // initial UI state
-        final Button mStartSeekBtn = (Button)view.findViewById(R.id.seeker);
-        final Button mStopSeekBtn = (Button)view.findViewById(R.id.stopSeek);
-
         final ImageButton imgBtn = (ImageButton)view.findViewById(R.id.play_or_stop);
         final TextView playStopLabel = (TextView)view.findViewById(R.id.play_label);
 
@@ -174,6 +165,7 @@ public class SeekerFragment extends Fragment {
             mClientThread.stopThread();
             mClientThread = null;
             isSeeking = false;
+            instance = null;
         }
     }
 

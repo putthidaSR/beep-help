@@ -4,6 +4,8 @@ import android.media.AudioRecord;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import androidx.constraintlayout.solver.widgets.Helper;
+
 import com.sonicmeter.android.multisonicmeter.TrackRecord;
 import com.sonicmeter.android.multisonicmeter.Utils;
 
@@ -46,14 +48,18 @@ class Receiver extends Thread{
     @Override
     public void run() {
         if (!mRole.equals(HELPER) && !mRole.equals(SEEKER)) {
-            //MainActivity.log("INVALID ROLE");
+            HelperFragment.log("INVALID ROLE");
             return;
         }
 
         Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
 
         //Start recording check if received SOS
-        //MainActivity.log(String.format("Searching %s.", mMsg));
+        if (mRole.equals(SEEKER)) {
+            SeekerFragment.log(String.format("Searching %s.", mMsg));
+        } else {
+            HelperFragment.log(String.format("Searching %s.", mMsg));
+        }
 
         Utils.initConvolution(DataFile.CDMAack.length);
         Utils.initRecorder(DataFile.sampleRate);
@@ -76,7 +82,13 @@ class Receiver extends Thread{
             if (mPauseReceive) {
                 continue;
             }
-            //MainActivity.log(String.format("%s similarity : %f.", mMsg, similarity));
+
+            if (mRole.equals(SEEKER)) {
+                SeekerFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
+            } else {
+                HelperFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
+            }
+
             if(similarity > DataFile.getThreshold()) {
                 count++;
                 if(count >= 3) {
@@ -90,17 +102,16 @@ class Receiver extends Thread{
         mRecordThread.stopRecord();
 
         if(!mExit) {
-            //MainActivity.log(String.format("%s received %s.", mRole, mMsg));
 
-            if(mRole.equals(SEEKER)) {
-                MainActivity.mClientThread.receivedACK();
-            }
-
-            if (mRole.equals(HELPER)) {
+            if (mRole.equals(SEEKER)) {
+                SeekerFragment.log(String.format("%s received %s.", mRole, mMsg));
+                SeekerFragment.mClientThread.receivedACK();
+            } else if (mRole.equals(HELPER)) {
+                HelperFragment.log(String.format("%s received %s.", mRole, mMsg));
                 // Start sender thread to send ACK
                 //("Helper sending ACK.");
-                MainActivity.mClientThread = new Sender(HELPER);
-                MainActivity.mClientThread.start();
+                SeekerFragment.mClientThread = new Sender(HELPER);
+                SeekerFragment.mClientThread.start();
             }
         }
     }
@@ -150,8 +161,8 @@ class Receiver extends Thread{
 
     void stopThread() {
         mExit = true;
-        if(mRole.equals(HELPER) && MainActivity.mClientThread != null) {
-            MainActivity.mClientThread.stopThread();
+        if(mRole.equals(HELPER) && SeekerFragment.mClientThread != null) {
+            SeekerFragment.mClientThread.stopThread();
         }
     }
 
