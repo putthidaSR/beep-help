@@ -11,14 +11,24 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,18 +37,7 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
 
-    private Spinner thresholdSpinner;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
-    String msg = "";
-    public static String frequencyInput = "6000";
-    public static String sampleRateInput = "48000";
-    public static String bandWidthInput = "1000";
-
-    static Sender mClientThread;
-    static Receiver mReceiverThread;
-
-    Button mStartSendBtn;
-    Button mStartReceiveBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,15 +94,21 @@ public class HomeFragment extends Fragment {
 
         // When seeker role is selected
         mStartSendBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+            public void onClick(final View v) {
 
-                //mStartSendBtn.setEnabled(false);
+                final String [] items = new String[] {"Quiet", "Moderate", "Noisy"};
+                final Integer[] icons = new Integer[] {R.drawable.quiet, R.drawable.moderate, R.drawable.noisy};
+                ListAdapter adapter = new ArrayAdapterWithIcon(getActivity(), items, icons);
 
                 // Create the object of AlertDialog Builder class
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                View titleView = getLayoutInflater().inflate(R.layout.environment_dialog, null);
 
-                // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
-                builder.setCancelable(false);
+                // Set Cancelable true for when the user clicks on the outside the Dialog Box then it will remain show
+                builder.setCancelable(true);
+                builder.setIcon(R.drawable.app_logo);
+                builder.setCustomTitle(titleView);
 
                 // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
                 builder.setNegativeButton("Cancel",
@@ -114,18 +119,15 @@ public class HomeFragment extends Fragment {
                                 dialog.cancel();
                             }
                         });
-
                 builder.setTitle("Choose Your Environment")
-                        .setItems(R.array.threshold, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // The 'which' argument contains the index position
-                                // of the selected item
-                                Log.d("test", String.valueOf(which));
+                        .setAdapter(adapter, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int item ) {
+                                Toast.makeText(getActivity(), "Item Selected: " + item, Toast.LENGTH_SHORT).show();
 
-//                                // Create new fragment and transaction
-//                                Fragment aboutUsFragment = new AboutUsFragment();
-//                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).commit();
-
+                                // Create new fragment and transaction
+////                            Fragment aboutUsFragment = new AboutUsFragment();
+////                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).commit();
+//
                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                 intent.putExtra("EXTRA_SESSION_ID", "tttt");
                                 startActivity(intent);
@@ -166,4 +168,5 @@ public class HomeFragment extends Fragment {
             ActivityCompat.requestPermissions(getActivity(), listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
         }
     }
+
 }
