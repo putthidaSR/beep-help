@@ -6,17 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="4dp"
+        android:text="Do you?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/seeker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:text="SEEKER"
+        android:text="Seek for Help"
         app:layout_constraintBottom_toTopOf="@+id/helper"
         app:layout_constraintEnd_toStartOf="@+id/stopSeek"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/role" />
 
     <Button
         android:id="@+id/stopSeek"
@@ -34,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:text="HELPER"
+        android:text="Listen to Provide Help"
         app:layout_constraintBottom_toTopOf="@+id/upperHorizontalGuideline"
         app:layout_constraintEnd_toStartOf="@+id/stopHelp"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -105,4 +115,6 @@
         app:layout_constraintBottom_toTopOf="@id/textview_log"
         app:layout_constraintStart_toStartOf="@+id/textview_log"
         app:layout_constraintTop_toBottomOf="@id/lowerHorizontalGuideline" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
