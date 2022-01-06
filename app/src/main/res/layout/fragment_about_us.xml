@@ -1,24 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="horizontal"
+    android:layout_centerVertical="true"
     tools:context=".NavigatorActivity">
 
-    <TextView
-        android:id="@+id/secondFragment"
+    <ImageView
+        android:id="@+id/beepLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Beep Help"
-        android:textColor="#43a047"
-        android:textSize="40sp"
-        android:textStyle="italic|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        app:srcCompat="@drawable/beep_help" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/soundWave"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/beepLogo"
+        android:layout_marginTop="-20dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/sound" />
+
+    <TextView
+        android:id="@+id/mission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The mission of Beep Help app is to turn everyone's phone into a transmitter that can send SOS signal from the phone's speaker. No cellular signal is needed. It makes the phone last longer than other technologies while sending SOS signal. Any phones can locate the one that is sending SOS and let it know the help is on the way."
+        android:textColor="@color/primaryPurple"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:layout_below="@+id/soundWave"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="30dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@+id/mission"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/email_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="?attr/minTouchTargetSize"
+        android:layout_below="@+id/divider"
+        android:paddingTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="40dp"
+            android:maxHeight="40dp"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/email"  />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingEnd="25dp"
+            android:maxLines="1"
+            android:textSize="12dp"
+            android:text="Email Us"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@+id/email_option"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/website_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="?attr/minTouchTargetSize"
+        android:layout_below="@+id/divider1"
+        android:paddingTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/website_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="40dp"
+            android:maxHeight="40dp"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/website"  />
+
+        <TextView
+            android:id="@+id/website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingEnd="25dp"
+            android:maxLines="1"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:text="Visit Our Website"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@+id/website_option"/>
+
+
+    <TextView
+        android:id="@+id/TextViewBottomVersion"
+        android:text="Version 1.0\n&#169;2021 JC-TECHS CORP. All Rights Reserved."
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+        android:textSize="10dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom|center"></TextView>
+</RelativeLayout>
