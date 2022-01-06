@@ -167,15 +167,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static void log(final String text)
     {
-        instance.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                TextView logBox = instance.findViewById(R.id.textview_log);
-                logBox.setMovementMethod(ScrollingMovementMethod.getInstance());
-                //Calendar cal = Calendar.getInstance();
-                logBox.append("  "+ text + "\n");//cal.get(Calendar.MINUTE)+ ":" +cal.get(Calendar.SECOND)+ ":" + cal.get(Calendar.MILLISECOND) +
-            }
-        });
+//        instance.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                TextView logBox = instance.findViewById(R.id.textview_log);
+//                logBox.setMovementMethod(ScrollingMovementMethod.getInstance());
+//                //Calendar cal = Calendar.getInstance();
+//                logBox.append("  "+ text + "\n");//cal.get(Calendar.MINUTE)+ ":" +cal.get(Calendar.SECOND)+ ":" + cal.get(Calendar.MILLISECOND) +
+//            }
+//        });
     }
 
 //    public static void decodedMsg(final String text)

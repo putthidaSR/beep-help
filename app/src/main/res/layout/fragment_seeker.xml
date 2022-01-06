@@ -7,37 +7,55 @@
     tools:context=".SeekerFragment">
 
     <TableRow
-        android:id="@+id/table"
+        android:id="@+id/icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:padding="5dp">
+        android:layout_marginTop="10dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/seeker"
+        <ImageButton
+            android:id="@+id/play_or_stop"
+            android:layout_margin="10dip"
+            android:background="@drawable/stop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:drawableTop="@drawable/start"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingTop="10dp"
-            android:textColor="@color/primaryPurple"
-            android:text="\nSeeking\nfor help\n"/>
+            android:layout_height="wrap_content" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stopSeek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:drawableTop="@drawable/stop"
-            android:text="\nStop\nSeeking\n"
-            android:layout_marginLeft="30dp"
-            android:backgroundTint="@android:color/transparent"
-            android:paddingTop="10dp"
-            android:textColor="@color/primaryPurple"
-            android:layout_gravity="right"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/seeker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:enabled="true"-->
+<!--            android:drawableTop="@drawable/start"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:textColor="@color/primaryPurple"-->
+<!--            android:text="\nSeeking\nfor help\n"/>-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/stopSeek"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:enabled="true"-->
+<!--            android:drawableTop="@drawable/stop"-->
+<!--            android:text="\nStop\nSeeking\n"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:textColor="@color/primaryPurple"-->
+<!--            android:layout_gravity="right"/>-->
     </TableRow>
+
+    <TextView
+        android:id="@+id/play_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Stop Seeking"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:layout_below="@+id/icon" />
 
     <TextView
         android:id="@+id/log_label"
@@ -47,15 +65,16 @@
         android:layout_marginBottom="10dp"
         android:text="Results:"
         android:textSize="15dp"
-        android:layout_below="@+id/table" />
+        android:layout_below="@+id/play_label" />
 
     <TextView
-        android:id="@+id/textview_log"
+        android:id="@+id/seeker_textview_log"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#C6C3C3"
         android:scrollbars="vertical"
-        android:gravity="center"
+        android:gravity="left"
+        android:paddingHorizontal="5dp"
         android:layout_below="@+id/log_label" />
 
 </RelativeLayout>
