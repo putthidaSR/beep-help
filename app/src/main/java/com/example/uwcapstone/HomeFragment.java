@@ -99,10 +99,10 @@ public class HomeFragment extends Fragment {
 
                 final String [] items = new String[] {"Quiet", "Moderate", "Noisy"};
                 final Integer[] icons = new Integer[] {R.drawable.quiet, R.drawable.moderate, R.drawable.noisy};
-                ListAdapter adapter = new ArrayAdapterWithIcon(getActivity(), items, icons);
+                final ListAdapter adapter = new ArrayAdapterWithIcon(getActivity(), items, icons);
 
                 // Create the object of AlertDialog Builder class
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View titleView = getLayoutInflater().inflate(R.layout.environment_dialog, null);
 
                 // Set Cancelable true for when the user clicks on the outside the Dialog Box then it will remain show
@@ -124,13 +124,18 @@ public class HomeFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int item ) {
                                 Toast.makeText(getActivity(), "Item Selected: " + item, Toast.LENGTH_SHORT).show();
 
+                                String threshold = items[item];
+                                Log.d("HomeFragment", threshold);
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("threshold", String.valueOf(threshold));
+
                                 // Create new fragment and transaction
-////                            Fragment aboutUsFragment = new AboutUsFragment();
-////                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).commit();
-//
-                                Intent intent = new Intent(getContext(), MainActivity.class);
-                                intent.putExtra("EXTRA_SESSION_ID", "tttt");
-                                startActivity(intent);
+
+                                SeekerFragment seekerFragment = new SeekerFragment();
+                                seekerFragment.setArguments(bundle);
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, seekerFragment).commit();
+
                             }
                         });
 
@@ -142,6 +147,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        mStartReceiveBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // start to listen to sequence
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.putExtra("EXTRA_SESSION_ID", "tttt");
+                startActivity(intent);
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;

@@ -10,6 +10,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
                 // get message in spinner
                 msg = adapter.getItemAtPosition(position).toString();
+                Log.d("MainActivity", msg);
                 DataFile.updateThreshold(msg);
             }
             @Override
