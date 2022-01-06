@@ -27,7 +27,6 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
 
-    private static HomeActivity instance;
     private Spinner thresholdSpinner;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     String msg = "";
