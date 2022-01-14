@@ -17,7 +17,7 @@
         android:paddingTop="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        app:srcCompat="@drawable/beep_help" />
+        app:srcCompat="@drawable/beep_help_word" />
 
     <ImageView
         android:id="@+id/soundWave"

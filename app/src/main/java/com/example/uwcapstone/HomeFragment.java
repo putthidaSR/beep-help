@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
 
                 // Set Cancelable true for when the user clicks on the outside the Dialog Box then it will remain show
                 builder.setCancelable(true);
-                builder.setIcon(R.drawable.app_logo);
+                //builder.setIcon(R.drawable.app_logo);
                 builder.setCustomTitle(titleView);
 
                 // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
