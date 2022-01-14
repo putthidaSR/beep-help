@@ -83,11 +83,11 @@ class Receiver extends Thread{
                 continue;
             }
 
-            if (mRole.equals(SEEKER)) {
-                SeekerFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
-            } else {
-                HelperFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
-            }
+//            if (mRole.equals(SEEKER)) {
+//                SeekerFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
+//            } else {
+//                HelperFragment.log(String.format("%s similarity : %f.", mMsg, similarity));
+//            }
 
             if(similarity > DataFile.getThreshold()) {
                 count++;

@@ -88,6 +88,7 @@ public class SeekerFragment extends Fragment {
         Bundle bundle = this.getArguments();
         String data = bundle.getString("threshold");
         Log.d("data", data);
+        msg = data;
         DataFile.updateThreshold(msg);
 
         // initial audiotrack player
