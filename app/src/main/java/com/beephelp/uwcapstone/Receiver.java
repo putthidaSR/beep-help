@@ -1,10 +1,7 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
 import android.media.AudioRecord;
-import android.provider.ContactsContract;
 import android.util.Log;
-
-import androidx.constraintlayout.solver.widgets.Helper;
 
 import com.sonicmeter.android.multisonicmeter.TrackRecord;
 import com.sonicmeter.android.multisonicmeter.Utils;

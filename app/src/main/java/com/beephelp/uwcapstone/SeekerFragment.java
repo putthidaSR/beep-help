@@ -1,7 +1,5 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
-import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -15,16 +13,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sonicmeter.android.multisonicmeter.Params;
 import com.sonicmeter.android.multisonicmeter.Utils;
-
-import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.

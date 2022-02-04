@@ -1,4 +1,4 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
 import android.content.Context;
 import android.content.res.TypedArray;

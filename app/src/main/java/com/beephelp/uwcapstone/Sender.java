@@ -1,4 +1,4 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
 import com.sonicmeter.android.multisonicmeter.Utils;
 

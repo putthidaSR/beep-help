@@ -1,4 +1,4 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
 import com.villoren.java.dsp.convolution.AbstractConvolutionD;
 import com.villoren.java.dsp.convolution.ConvolutionRealD;

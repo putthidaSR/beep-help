@@ -1,4 +1,4 @@
-package com.example.uwcapstone;
+package com.beephelp.uwcapstone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
