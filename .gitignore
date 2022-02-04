@@ -13,3 +13,6 @@
 /captures
 .externalNativeBuild
 .cxx
+*.aab
+app/release/app-release.apk
+app/release/output.json
